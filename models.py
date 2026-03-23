@@ -16,7 +16,7 @@ def read_metadata(file_path):
     file = File(file_path)
     # to do
     # return dictionary w/fields - title, artist, album, track number, date (year)
-    # handle missing tags....
+    # handle missing tags.... how!!!!! to search
     return file
 
 results_file = read_metadata("C:/Users/anagr/Music/Traced in Air/Adam’s Murmur - demo version - Cynic.flac")
