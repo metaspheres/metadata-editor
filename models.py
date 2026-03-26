@@ -14,7 +14,12 @@ def scan_folder(folder_path):
 
 def read_metadata(file_path):
     file = File(file_path)
-    # return dictionary w/fields - title, artist, album, track number, date (year)
+    #fallback p/data 
+    date = file.get('date')
+    try:
+        date = int((file.get('date') or ['1980'])[0][:4])
+    except ValueError:
+        date = 1980
 
     file_metadata = {
         "Artist":(file.get('artist') or ['Unknown'])[0],
@@ -22,7 +27,8 @@ def read_metadata(file_path):
         "Title":(file.get('title') or ['Unknown'])[0],
         "Album":(file.get('album') or ['Unknown'])[0],
         "Track Number":(file.get('tracknumber') or ['Unknown'])[0],
-        "Date": int((file.get('date') or ['1980'])[0][:4])
+        "Date": date,
+        "Path": file_path
         }
 
     return file_metadata
@@ -41,12 +47,9 @@ def get_library(folder_path):
 
 # results_folder = scan_folder("C:/Users/anagr/Music")
 
-results_all = get_library("C:/Users/anagr/Music")
+# results_all = get_library("C:/Users/anagr/Music")
 
-print(results_all)
+# print(results_all)
 
-
-
-# print(results_folder)
-
+#  
 # print(results_file)

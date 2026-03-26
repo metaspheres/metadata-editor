@@ -4,8 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+<link rel="stylesheet" href="static\css\style.css">
+
+
 </head>
 <body>
     Music Editor
+<table>
+    <tr>
+        <th>Artist</th>
+        <th>Title</th>
+        <th>Album</th>
+        <th>Track Number</th>
+        <th>Date</th>
+        <th>Edit</th>
+    </tr>
+        {% for song in data %}
+    <tr>
+            <td>{{ song['Artist'] }}</td>
+            <td>{{ song['Title'] }}</td>
+            <td>{{ song['Album'] }}</td>
+            <td>{{ song['Track Number'] }}</td>
+            <td>{{ song['Date'] }}</td>
+            <td><a href="/edit?path={{ song['Path'] }}">Edit</a></td>
+    </tr>
+        {% endfor %}   
+        
+</table>
+ 
 </body>
 </html>
