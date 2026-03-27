@@ -42,6 +42,16 @@ def get_library(folder_path):
     
     return file_list
 
+def get_directory(directory):
+    selected_directory = Path(directory)
+    subdir_list = []
+
+    for subdir in selected_directory.iterdir():
+        if subdir.is_dir():
+            subdir_list.append(str(subdir)) # converter p string para usar jsonfy
+
+    return subdir_list
+
 
 # results_file = read_metadata("C:/Users/anagr/Music/Traced in Air/Adam’s Murmur - demo version - Cynic.flac")
 

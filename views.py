@@ -1,5 +1,5 @@
 from main import app
-from flask import render_template, request, redirect, url_for
+from flask import render_template, request, redirect, url_for, jsonify
 from models import *
 
 
@@ -39,3 +39,11 @@ def save():
     file.save()
 
     return redirect(url_for("homepage"))
+
+@app.route("/browse", methods=["GET"])
+
+def browse():
+    directory = request.args.get('path')
+    subdir_list = get_directory(directory)
+
+    return jsonify(subdir_list)
