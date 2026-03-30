@@ -1,6 +1,7 @@
 from pathlib import Path
 from mutagen import File
 
+# scan da pasta e mostrar ficheiros de musica
 def scan_folder(folder_path):
 
     path = Path(folder_path)
@@ -12,6 +13,7 @@ def scan_folder(folder_path):
 
     return file_list
 
+# ler metadados do ficheiro atraves da path inserida 
 def read_metadata(file_path):
     file = File(file_path)
     #fallback p/data 
@@ -33,6 +35,7 @@ def read_metadata(file_path):
 
     return file_metadata
 
+# fazer scan da pasta - mostra subpastas e ficheiros
 def get_library(folder_path):
 
     file_list = []
@@ -42,6 +45,7 @@ def get_library(folder_path):
     
     return file_list
 
+# mostrar apenas subpastas (subdir) -> para escolher caminho na main a ser utilizado
 def get_directory(directory):
     selected_directory = Path(directory)
     subdir_list = []

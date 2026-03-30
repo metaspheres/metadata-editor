@@ -18,3 +18,11 @@ td, th {
   text-align: left;
   padding: 8px;
 }
+
+.main-container{
+  display: inline-grid;
+}
+
+.path-container{
+  grid-column-start: 1;
+}
