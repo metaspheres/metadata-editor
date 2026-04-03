@@ -11,10 +11,14 @@
             Music Editor
         <div class="path-container">
             <label for="folder-browser-input"></label>    
-            <input id="folder-browser-input" type="text" name="path" placeholder="C:/Users">
-            <div id="suggestions">
+            <form action="/load" method="post">
+                <input id="folder-browser-input" type="text" name="path" placeholder="C:/Users">
 
-            </div>
+                <input type="hidden" name="folder_path" id="selected-path">
+                <button type="submit" id="load-library">Carregar Biblioteca</button>
+
+            </form>
+            <div id="suggestions"></div>
         </div>
         <div class="music-data-container">
         <table>

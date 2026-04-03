@@ -9,11 +9,14 @@ function getPath(event){
         const suggestions = document.getElementById("suggestions")
         suggestions.innerHTML = ""
         data.forEach(path =>{
+            console.log("Creating item for:", path)
             const item = document.createElement("div")
             item.textContent = path
             item.addEventListener("click", () => {
-                document.getElementById("folder=browser=input").value = path
+                document.getElementById("folder-browser-input").value = path
+                document.getElementById("selected-path").value = path       
                 getPath()
+
             })
             suggestions.appendChild(item)
         })
@@ -21,3 +24,13 @@ function getPath(event){
     })
 }
 
+document.querySelector("form").addEventListener("submit", () => {
+    const typedPath = document.getElementById("folder-browser-input").value
+    const hiddenInput = document.getElementById("selected-path")
+    if (!hiddenInput.value) {
+        hiddenInput.value = typedPath
+    }
+})
+
+
+                  

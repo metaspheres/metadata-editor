@@ -1,12 +1,16 @@
 from main import app
-from flask import render_template, request, redirect, url_for, jsonify
+from flask import render_template, request, redirect, url_for, jsonify, session
 from models import *
-
 
 @app.route("/")
 
 def homepage():
-    library = get_library("C:/Users/anagr/Music")
+    folder_path = session.get('folder_path')
+
+    if not folder_path:
+        return render_template("homepage.html", data=[])
+    
+    library = get_library(folder_path)
     return render_template("homepage.html", data=library)
 
 @app.route("/edit", methods=["GET", "POST"])
@@ -47,3 +51,13 @@ def browse():
     subdir_list = get_directory(directory)
 
     return jsonify(subdir_list)
+
+@app.route("/load", methods=["POST"])
+
+def load_library():
+    path = request.form.get(('folder_path'))
+    print("Received path:", path + "end of received path") 
+
+    session['folder_path'] = path
+
+    return redirect(url_for("homepage"))

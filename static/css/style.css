@@ -26,3 +26,12 @@ td, th {
 .path-container{
   grid-column-start: 1;
 }
+
+#suggestions div {
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
+#suggestions div:hover {
+    background-color: #f0f0f0;
+}
