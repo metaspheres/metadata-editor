@@ -8,18 +8,19 @@
 </head>
 <body>
     <div class="main-container">
-            Music Editor
+        <span class="title">music editor [ now playing ... ]</span>
         <div class="path-container">
             <label for="folder-browser-input"></label>    
-            <form action="/load" method="post">
+            <form action="/load" method="post" class="form-submit">
                 <input id="folder-browser-input" type="text" name="path" placeholder="C:/Users">
 
                 <input type="hidden" name="folder_path" id="selected-path">
                 <button type="submit" id="load-library">Carregar Biblioteca</button>
 
             </form>
-            <div id="suggestions"></div>
         </div>
+        <div id="suggestions"></div>
+
         <div class="music-data-container">
         <table>
             <tr>
