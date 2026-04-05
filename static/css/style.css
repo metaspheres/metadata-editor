@@ -66,16 +66,14 @@ body {
 
 .path-container-grid {
   display: grid;
-  grid-template-rows: auto auto;  /* row 1: form, row 2: suggestions */
-  width: 100%;
-  margin: 0 auto;
+  grid-template-rows: 1fr 1fr; 
+  align-items: flex-start;
+ 
 }
 
 .path-container{
   width: 100%;
   margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
   padding: 10px 5px 10px 0px ;
 }
 
