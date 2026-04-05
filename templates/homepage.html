@@ -9,18 +9,25 @@
 <body>
     <div class="main-container">
         <span class="title">music editor [ now playing ... ]</span>
-        <div class="path-container">
-            <label for="folder-browser-input"></label>    
-            <form action="/load" method="post" class="form-submit">
-                <input id="folder-browser-input" type="text" name="path" placeholder="C:/Users">
 
-                <input type="hidden" name="folder_path" id="selected-path">
-                <button type="submit" id="load-library">Carregar Biblioteca</button>
+        <div class="main-section">
+            <div class="path-container-grid">
+                <div class="path-container">
+                    <label for="folder-browser-input"></label>    
+                    <form action="/load" method="post" class="form-submit">
+                        <span>
+                        <input id="folder-browser-input" type="text" name="path" placeholder="C:/Users">
+                        </span>  
+                        <span>
+                        <input type="hidden" name="folder_path" id="selected-path">
+                        <button type="submit" id="load-library"><img src="static/imgs/search.png"></button>
+                        </span>
+                    </form>
+                </div>
+                <div id="suggestions"></div>
+            </div>
 
-            </form>
-        </div>
-        <div id="suggestions"></div>
-
+        
         <div class="music-data-container">
         <table>
             <tr>
@@ -43,6 +50,7 @@
                 {% endfor %}   
                 
         </table>
+        </div>
         </div>
     </div>
 <script src="static\js\main.js"></script>

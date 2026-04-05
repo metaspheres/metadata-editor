@@ -3,12 +3,14 @@
 	font-family: "Rubik";
 	src: url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet')
 }
-:root {
-  --main-bg-color: #191b2c;
-  --container-bg-color: #121421;
-  --font-color:#ffffff;
-  --title-color:#AA99FF;
 
+
+:root {
+  --body-text-color: #F6F0E9;
+  --accents-color: #EC4C56;
+  --main-background-color: #242933;
+  --no-highlight-color:#596172;
+  --container-color: #1C222D;
 }
 
 *{
@@ -20,86 +22,163 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: var(--main-bg-color);
+  background-color: var(--main-background-color);
 }
 
 .title{
-  color:var(--title-color);
+  color:var(--accents-color);
   font-family: "Rubik", sans-serif;
-  font-size: 46px;
+  font-size: 22px; /* for compability */
+  font-size: min(max(2rem, 4vw), 44px);
 	font-optical-sizing: auto;
 	font-weight: 400;
-  padding: 10px 0px 10px 0px ;
+  padding: 10% 0% 15% 0% ;
 }
+
+
 .main-container{
   max-width: 1200px;
   width: 100%;
-  margin: 0 auto;  
+  margin: 0 auto;
+  padding-top: 10%;  
   color: var(--font-color);
 
-  
-
 }
 
-.music-data-container{
-  margin: 0 auto;
-  background-color: var(--container-bg-color);
-  color: var(--font-color);
-}
-
-.path-container{
-  width: inherit;
-  margin: 0 auto;
-  display: flex;
-  padding: 10px 0px 10px 0px ;
-}
-
-
-table {
-
-  border-collapse: collapse;
-  width: 100%;
-  
-}
-
-td, th {
-  text-align: left;
-  padding: 8px;
-  border: 1px solid rgb(32, 36, 43);
-
-}
-
-.path-container{
-  display: flex;
+.main-section{
+  display: grid;
+  border:var(--accents-color);
+	grid-template-columns: 2fr 3fr;
+  gap:10px;
   justify-content: center;
-  width: 100%;
-  height:100%;
+
+  /* display: flex;
+  align-items: flex-start; */
+
 }
 
-.form-submit{
-  display: flex;
-  width: 100%;
-  height:100%;
+
+@media screen and (max-width: 768px) {
+    .main-section {
+        grid-template-columns: 1fr;
+    }
 }
+
+.path-container-grid {
+  display: grid;
+  grid-template-rows: auto auto;  /* row 1: form, row 2: suggestions */
+  width: 100%;
+  margin: 0 auto;
+}
+
+.path-container{
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 10px 5px 10px 0px ;
+}
+
 
 .music-data-container{
-  /* -webkit-text-size-adjust: 100%; */
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px 5px 10px 0px ;
 	font-family: "Rubik", sans-serif;
-  font-size: 14px;
 	font-optical-sizing: auto;
 	font-weight: 400;
 	font-style: normal;
 	text-align:justify;
+  font-size:16px;
+  color: var(--no-highlight-color);
+
+  
 
 }
 
+table {
+  background-color: var(--container-color);
+  border-collapse: collapse;
+  width: 100%;
+
+}
+
+.music-data-container th{
+  background-color: var(--container-color);
+
+}
+td, th {
+  text-align: left;
+  padding: 8px;
+
+}
+
+
+.form-submit{
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  gap:8px;
+  width: 100%;
+  height:100%;
+}
+
+.form-submit span:first-child {
+  flex: 1;
+}
+
+#folder-browser-input{
+  font-size:16px;
+  font-family: "Rubik", sans-serif;
+  width: 100%;
+  height:inherit;
+  padding: 13px 32px;
+  border: none;
+  background-color: var(--no-highlight-color);
+
+}
+
+input::placeholder {
+  color: var(--body-text-color);
+}
+
+#load-library{
+  background-color: var(--accents-color);
+  border: none;
+  border-radius: 0px 10px 10px 0px;
+  color: white;
+  padding: 13px 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+
+}
+
+#load-library img{
+  width: 60px;
+  height: 15px;
+  object-fit: contain;
+}
+
+#load-library:hover{
+  background-color: #1a1a1a;
+
+}
 
 #suggestions div {
-    cursor: pointer;
-    padding: 4px 8px;
+
+  cursor: pointer;
+  padding: 4px 8px;
+  font-family: "Rubik", sans-serif;
+  color: var(--no-highlight-color);
+  transition-property: var(--main-background-color);
+  transition-duration: 0.5s;
+
 }
 
-#suggestions div:hover {
-    background-color: #f0f0f0;
+#suggestions div:hover, div:focus {
+    background-color: var(--container-color);
+
 }
 
