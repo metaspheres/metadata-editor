@@ -46,13 +46,15 @@
                     <td>{{ song['Album'] }}</td>
                     <td>{{ song['Track Number'] }}</td>
                     <td>{{ song['Date'] }}</td>
-                    <td><a href="/edit?path={{ song['Path'] }}">Edit</a></td>
+                  
+                    <td><a href="/edit?path={{ song['Path'] }}">  <img src="static\imgs\edit.png" alt="Edit"></a></td>
             </tr>
                 {% endfor %}   
                 
         </table>
         </div>
         </div>
+        <a href="https://www.flaticon.com/free-icons/edit" title="edit icons">Edit icons created by Pixel perfect - Flaticon</a>
     </div>
 <script src="static\js\main.js"></script>
 
