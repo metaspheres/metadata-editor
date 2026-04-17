@@ -56,14 +56,3 @@ def get_directory(directory):
 
     return subdir_list
 
-
-# results_file = read_metadata("C:/Users/anagr/Music/Traced in Air/Adam’s Murmur - demo version - Cynic.flac")
-
-# results_folder = scan_folder("C:/Users/anagr/Music")
-
-# results_all = get_library("C:/Users/anagr/Music")
-
-# print(results_all)
-
-#  
-# print(results_file)
