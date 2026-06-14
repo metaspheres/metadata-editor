@@ -10,45 +10,43 @@
     {% include "header.html" %}
 
     <main>
-        <section class="main-section">
+        <section class="search folder-list">
             <label for="folder-browser-input"></label>    
             <form action="/load" method="post" class="form-submit">
                 <span>
-                <input id="folder-browser-input" type="text" name="path" placeholder="C:/Users">
+                    <input id="folder-browser-input" type="text" name="path" placeholder="C:/Users">
                 </span>  
                 <span>
-                <input type="hidden" name="folder_path" id="selected-path">
-                <button type="submit" id="load-library"><img src="static/imgs/search.png"></button>
+                    <input type="hidden" name="folder_path" id="selected-path">
+                    <button type="submit" id="load-library"><img src="static/imgs/search.png"></button>
                 </span>
             </form>
             <div id="suggestions"></div>
+        </section>
 
-
-        
-        <div class="music-data-container">
-        <table>
-            <tr>
-                <th>Artist</th>
-                <th>Title</th>
-                <th>Album</th>
-                <th>Track Number</th>
-                <th>Date</th>
-                <th>Edit</th>
-            </tr>
-                {% for song in data %}
-            <tr>
-                    <td>{{ song['Artist'] }}</td>
-                    <td>{{ song['Title'] }}</td>
-                    <td>{{ song['Album'] }}</td>
-                    <td>{{ song['Track Number'] }}</td>
-                    <td>{{ song['Date'] }}</td>
-                  
-                    <td><a href="/edit?path={{ song['Path'] }}">  <img src="static\imgs\edit.png" alt="Edit"></a></td>
-            </tr>
-                {% endfor %}   
-                
-                </table>
-            </div>
+        <section class="music-data-container">
+            <table>
+                <tr>
+                    <th>Artist</th>
+                    <th>Title</th>
+                    <th>Album</th>
+                    <th>Track Number</th>
+                    <th>Date</th>
+                    <th>Edit</th>
+                </tr>
+                    {% for song in data %}
+                <tr>
+                        <td>{{ song['Artist'] }}</td>
+                        <td>{{ song['Title'] }}</td>
+                        <td>{{ song['Album'] }}</td>
+                        <td>{{ song['Track Number'] }}</td>
+                        <td>{{ song['Date'] }}</td>
+                    
+                        <td><a href="/edit?path={{ song['Path'] }}">  <img src="static\imgs\edit.png" alt="Edit"></a></td>
+                </tr>
+                    {% endfor %}   
+                    
+            </table>
         </section>
     </main>
     {% include "footer.html" %}
