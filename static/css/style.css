@@ -7,15 +7,15 @@
 
 :root {
   --body-text-color: #F6F0E9;
-  --accents-color: #b22424;
-  --main-background-color: #1C222D;
-  --no-highlight-color:#596172;
+  --accents-color: #ebb31b;
+  --main-bg-color:#080b0f;
+  --light-bg-color:#242525;
   --container-color: #242933;
 }
 
 
 body {
-  background-color: var(--main-background-color);
+  background-color: var(--main-bg-color);
   margin: 0 auto;
 }
 
@@ -33,14 +33,55 @@ body {
 
 
 
-.header{
-  margin: 0 auto;
+header{
+  display: flex;
+  flex-direction: row;
   padding-top: 2%;  
-  color:var(--no-highlight-color);
+  color:var(--light-bg-color);
   font-family: "Rubik", sans-serif;
   font-size: 14px; /* for compability */
 	font-optical-sizing: auto;
 	font-weight: 400;
+  gap:10px;
+}
+
+.search{
+    display: flex;
+  width: 100%;
+  flex-direction: row;
+}
+.search-bar{
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  width: 100%;
+  align-content: center;
+  align-items: center;
+}
+
+
+
+.form-submit{
+  display: flex;
+  align-items: center;
+  gap:8px;
+
+}
+
+.form-submit {
+  display: flex;
+  flex-direction: column;
+}
+
+#folder-browser-input{
+  width: 100%;
+  font-size:16px;
+  font-family: "Rubik", sans-serif;
+  height:inherit;
+  padding: 13px 32px;
+  border: none;
+  background-color: var(--light-bg-color);
+
 }
 
 
@@ -54,15 +95,7 @@ main {
 
 }
 
-.search {
-  display: flex;
-  flex-direction: column;
-}
 
-
-.search-bar {
-  display: flex;
-}
 .music-data-container{
   display: flex;
   width: 100%;
@@ -84,14 +117,14 @@ table {
 
 .music-data-container th{
   background-color: var(--container-color);
-  color: var(--no-highlight-color);
+  color: var( --light-bg-color);
 
 }
 
 td, th {
   text-align: left;
   padding: 4px;
-  border: 1px solid var(--main-background-color);
+  border: 1px solid var(--main-bg-color);
   text-align: center;
   background-color: var(--container-color);
 
@@ -104,29 +137,6 @@ td img{
   color: white;
 }
 
-
-
-.form-submit{
-  display: flex;
-  align-items: center;
-  gap:8px;
-
-}
-
-.form-submit span:first-child {
-  flex: 1;
-}
-
-#folder-browser-input{
-  width: 100%;
-  font-size:16px;
-  font-family: "Rubik", sans-serif;
-  height:inherit;
-  padding: 13px 32px;
-  border: none;
-  background-color: var(--no-highlight-color);
-
-}
 
 input::placeholder {
   color: var(--body-text-color);
@@ -161,8 +171,8 @@ input::placeholder {
   cursor: pointer;
   padding: 4px 8px;
   font-family: "Rubik", sans-serif;
-  color: var(--no-highlight-color);
-  transition-property: var(--main-background-color);
+  color: var(--light-bg-color);
+  transition-property: var(--main-bg-color);
   transition-duration: 0.5s;
 
 }
@@ -182,7 +192,7 @@ input::placeholder {
 }
 
 .footer span{
-  color:var(--no-highlight-color);
+  color:var(--light-bg-color);
   font-family: "Rubik", sans-serif;
   font-size: 14px; 
 	font-optical-sizing: auto;

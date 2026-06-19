@@ -1,28 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-<link rel="stylesheet" href="static\css\style.css">
+    <link rel="stylesheet" href="static\css\style.css">
 </head>
-<body>
-    {% include "header.html" %}
 
-    <main>
-        <section class="search folder-list">
-            <div class="search-bar">
-                <label for="folder-browser-input"></label>    
-                <form action="/load" method="post" class="form-submit">
-                    <span>
+<body>
+    <header>
+        {% include "header.html" %}
+            <div class="search folder-list">
+                <div class="search-bar">
+                    <label for="folder-browser-input"></label>
+                    <form action="/load" method="post" class="form-submit">
                         <input id="folder-browser-input" type="text" name="path" placeholder="C:/Users">
-                    </span>  
-                    <span>
                         <input type="hidden" name="folder_path" id="selected-path">
                         <button type="submit" id="load-library"><img src="static/imgs/search.png"></button>
-                    </span>
-                </form>
+                    </form>
+                </div>
+                 <div class="header-text">
+                    enter or copy your music folder path to browse
+                 </div>                    
+
             </div>
+    </header>
+    <main>
+        <section>
             <div id="suggestions"></div>
         </section>
 
@@ -36,23 +41,24 @@
                     <th>Date</th>
                     <th>Edit</th>
                 </tr>
-                    {% for song in data %}
+                {% for song in data %}
                 <tr>
-                        <td>{{ song['Artist'] }}</td>
-                        <td>{{ song['Title'] }}</td>
-                        <td>{{ song['Album'] }}</td>
-                        <td>{{ song['Track Number'] }}</td>
-                        <td>{{ song['Date'] }}</td>
-                    
-                        <td><a href="/edit?path={{ song['Path'] }}">  <img src="static\imgs\edit.png" alt="Edit"></a></td>
+                    <td>{{ song['Artist'] }}</td>
+                    <td>{{ song['Title'] }}</td>
+                    <td>{{ song['Album'] }}</td>
+                    <td>{{ song['Track Number'] }}</td>
+                    <td>{{ song['Date'] }}</td>
+
+                    <td><a href="/edit?path={{ song['Path'] }}"> <img src="static\imgs\edit.png" alt="Edit"></a></td>
                 </tr>
-                    {% endfor %}   
-                    
+                {% endfor %}
+
             </table>
         </section>
     </main>
     {% include "footer.html" %}
-<script src="static\js\main.js"></script>
+    <script src="static\js\main.js"></script>
 
 </body>
+
 </html>
