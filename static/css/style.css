@@ -60,14 +60,12 @@ header{
   display: flex;
   flex-direction: column;
   flex: 1;
-  background-color: red;
 }
 .search-bar{
   display: flex;
   flex-direction: row;
   flex: 1;
   min-width: 0;
-  background-color: greenyellow;
   /* width: 100%;
   align-content: center;
   align-items: center; */
@@ -75,15 +73,13 @@ header{
 
 
 
-.form-submit{
-  width: 100%;
-
-}
-
-/* .form-submit {
+.form-submit {
   display: flex;
-  flex-direction: column;
-} */
+  flex-direction: row;
+  flex: 1;
+  align-items: center;
+ 
+}
 
 #folder-browser-input{
   flex:1;
@@ -95,6 +91,31 @@ header{
   background-color: var(--light-bg-color);
 
 }
+
+#load-library{
+  background-color: var(--accents-color);
+  border: none;
+  border-radius: 0px 10px 10px 0px;
+  color: white;
+  padding: 13px 10px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
+
+}
+
+#load-library img{
+  width: 60px;
+  height: 15px;
+  object-fit: contain;
+}
+
+#load-library:hover{
+  background-color: #1a1a1a;
+
+}
+
 
 .header-under-text{
   color:var(--light-bg-color);
