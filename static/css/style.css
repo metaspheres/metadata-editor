@@ -68,8 +68,9 @@ header{
 }
 
 header img{
-  image-rendering: crisp-edges;
-  width: 140px;
+  image-rendering: smooth;
+  width: 100%;
+  max-width: 180px;
   min-width: 100px;
   height: auto;
 
