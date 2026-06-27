@@ -149,19 +149,21 @@ header img{
 }
 
 
-main {
+.main-container {
   margin: 0 auto;
   display: flex;
+  flex-direction: row;
+  width: 80%;
+  flex-wrap: wrap;
   padding-top: 2%;  
   color: var(--font-color);
   border:var(--accents-color);
-  gap:10px;
-
 }
 
 
 .music-data-container{
   display: flex;
+  flex: 3;
   width: 100%;
 	font-family: "Rubik", sans-serif;
 	font-optical-sizing: auto;
@@ -206,6 +208,14 @@ input::placeholder {
   color: var(--body-text-color);
 }
 
+.suggestions-container{
+  min-width: 300px;
+  min-height: 600px;
+  background-color: #242525;
+  flex: 1;
+  border-radius: 10px 10px 10px 10px;
+
+}
 
 #suggestions div {
 
