@@ -32,5 +32,43 @@ document.querySelector("form").addEventListener("submit", () => {
     }
 })
 
+function openAlbumModal(albumName) {
+    const modal = document.getElementById('album-modal');
+    const nameInput = document.getElementById('modal-album-name');
+    const songList = document.getElementById('modal-song-list');
 
+    modal.dataset.oldAlbum = albumName;
+
+    nameInput.value = albumName;
+
+    songList.innerHTML = '';
+    albumData[albumName].forEach(song => {
+        const div = document.createElement('div');
+        div.textContent = song['Track Number'] + ' - ' + song['Title'];
+        songList.appendChild(div);
+    });
+
+    modal.style.display = 'flex';
+}
+
+function closeAlbumModal() {
+    document.getElementById('album-modal').style.display = 'none';
+}
+
+function saveAlbumEdit() {
+    const modal = document.getElementById('album-modal');
+    const oldName = modal.dataset.oldAlbum;
+    const newName = document.getElementById('modal-album-name').value;
+
+    fetch('/save-album', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: 'old_album=' + encodeURIComponent(oldName) + '&new_album=' + encodeURIComponent(newName)
+    })
+    .then(response => {
+        if (response.ok) {
+            window.location.reload();  
+        }
+    });
+}
                   

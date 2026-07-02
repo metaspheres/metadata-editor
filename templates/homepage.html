@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}"></head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
 
 <body>
     <header>
@@ -21,7 +22,7 @@
                     <input type="hidden" name="folder_path" id="selected-path">
                     <button type="submit" id="load-library"><img src="static/imgs/search-yellow.png"></button>
                 </form>
-            </section>            
+            </section>
 
         </section>
     </header>
@@ -29,11 +30,44 @@
         <section class="actions-container">
 
         </section>
-        <section class ="suggestions-container">
+        <section class="suggestions-container container text-container">
+        <section class="text-container">
+            <h2>Search folder</h2>
+            </section>
             <div id="suggestions"></div>
         </section>
 
-        <section class="music-data-container">
+        <section class="sidebar container text-container">
+            <h2 class="w3-bar-item">Batch Edit</h5>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event, 'London')">London</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event, 'Paris')">Paris</button>
+            <button class="w3-bar-item w3-button tablink" onclick="openCity(event, 'Tokyo')">Tokyo</button>
+        </section>
+
+        <section class="albums-detected container">
+            <section class="text-container">
+            <h2>Albums found</h2>
+            </section>
+            {% for album_name, songs in albums.items() %}
+            <div class="album-card" data-album="{{ album_name }}">
+                <span class="album-name">{{ album_name }}</span>
+                <span class="album-count">{{ songs|length }}</span>
+                <button class="edit-album-btn" onclick="openAlbumModal('{{ album_name }}')">Edit</button>
+            </div>
+            {% endfor %}
+        </section>
+        <section class="music-data container"> <!-- maybe make 2 classes, one for all containers, other section specific -->
+            <section class="sticky-subtitle text-container">
+            <h2>Album details</h2>
+            </section>
+            <section class="album-info-container">
+                <figure class="artwork-container">
+
+                </figure>
+                <table class="album-info-table">
+
+                </table>
+            </section>
             <table>
                 <tr>
                     <th>Artist</th>
@@ -43,7 +77,7 @@
                     <th>Date</th>
                     <th>Edit</th>
                 </tr>
-                <!-- {% for song in data %}
+                {% for song in data %}
                 <tr>
                     <td>{{ song['Artist'] }}</td>
                     <td>{{ song['Title'] }}</td>
@@ -53,13 +87,25 @@
 
                     <td><a href="/edit?path={{ song['Path'] }}"> <img src="static\imgs\edit.png" alt="Edit"></a></td>
                 </tr>
-                {% endfor %} -->
+                {% endfor %}
 
             </table>
         </section>
     </main>
     {% include "footer.html" %}
     <script src="static\js\main.js"></script>
+    <script> const albumData = {{ albums | tojson }} </script>
+    <div id="album-modal" class="modal-overlay" style="display:none;">
+        <div class="modal-content">
+            <h3>Edit Album</h3>
+            <input type="text" id="modal-album-name" />
+            <div id="modal-song-list"></div>
+            <div class="modal-actions">
+                <button onclick="saveAlbumEdit()">Save</button>
+                <button onclick="closeAlbumModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
 
 </body>
 

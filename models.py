@@ -1,6 +1,7 @@
 from pathlib import Path
 from mutagen import File
 
+
 # scan da pasta e mostrar ficheiros de musica
 def scan_folder(folder_path):
 
@@ -13,7 +14,7 @@ def scan_folder(folder_path):
 
     return file_list
 
-# ler metadados do ficheiro atraves da path inserida 
+# reads all files metadata through inserted path
 def read_metadata(file_path):
     file = File(file_path)
 
@@ -21,7 +22,7 @@ def read_metadata(file_path):
         value = file.get(key)
         if value is not None:
             return value[0]
-        # verificar se ficheiro mp3 tem tags ID3 tags
+        # checks if mp3 file has ID3 tags
         if hasattr(file, 'tags') and hasattr(file.tags, 'get'):
             id3_map = {
                 'artist': 'TPE1',
@@ -55,7 +56,26 @@ def read_metadata(file_path):
 
     return file_metadata
 
-# fazer scan da pasta - mostra subpastas e ficheiros
+# def standard_name(file_path):
+#     track_error = "No Album Found"
+#     try:
+#         ...
+#     except:
+#         return track_error
+
+
+def group_by_album(library):
+    album_dict = {}
+
+    for song in library:
+        album_name = song["Album"]
+        if album_name not in album_dict:
+            album_dict[album_name] = []
+        album_dict[album_name].append(song)
+
+    return album_dict
+
+# scans folder and shows files and subfolders
 def get_library(folder_path):
 
     file_list = []
@@ -65,14 +85,14 @@ def get_library(folder_path):
     
     return file_list
 
-# mostrar apenas subpastas (subdir) -> para escolher caminho na main a ser utilizado
+# show only subfolders (subdir) -> para escolher caminho na main a ser utilizado
 def get_directory(directory):
     selected_directory = Path(directory)
     subdir_list = []
 
     for subdir in selected_directory.iterdir():
         if subdir.is_dir():
-            subdir_list.append(str(subdir)) # converter p string para usar jsonfy
+            subdir_list.append(str(subdir)) # converts to string
 
     return subdir_list
 

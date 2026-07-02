@@ -12,6 +12,21 @@
   --light-bg-color:#242525;
   --container-color: #242933;
   }
+/* ::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey; 
+  border-radius: 10px;
+} */
+::-webkit-scrollbar {
+  width: 5px;
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accents-color);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
 
 * {
   box-sizing: border-box;
@@ -21,11 +36,12 @@ body {
   background-color: var(--main-bg-color);
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
   margin-top: 2em;
   margin-right: 2em;
   margin-bottom: 2em;
   margin-left: 2em;
-  justify-content: center;
 }
 
 .title{
@@ -44,10 +60,8 @@ body {
 } */
 
 header{
-  margin: 0 auto;
   display: flex;
   flex-direction: row;
-  width: 80%;
   justify-content: center;
   gap: 10px;
   flex-wrap: wrap;
@@ -74,6 +88,12 @@ header img{
   min-width: 100px;
   height: auto;
 
+}
+
+header, .main-container {
+  width: 100%;
+  max-width: 1640px;
+  min-width: 600px;
 }
 
 
@@ -150,49 +170,84 @@ header img{
 
 
 .main-container {
-  margin: 0 auto;
   display: flex;
   flex-direction: row;
-  width: 80%;
   flex-wrap: wrap;
   padding-top: 2%;  
+  margin-top: 40px;
   color: var(--font-color);
   border:var(--accents-color);
 }
 
+/* .main-container h2{
+  margin-top: 5px;
+  color: var(--accents-color);
+  font-family: "Rubik", sans-serif;
+  font-size: 22px;
+  position: fixed;
+  background-color: var(--light-bg-color);
+} */
+.text-container{
+  color: var(--accents-color);
+  font-family: "Rubik", sans-serif;
+  background-color: var(--light-bg-color);
+}
 
-.music-data-container{
+
+
+.container{
+  background-color: var(--light-bg-color);
+  margin-left: 10px;
+  border-radius: 10px;
   display: flex;
-  flex: 3;
-  width: 100%;
+  flex-direction: column;
+  font-family: "Rubik", sans-serif;
+  font-size: 14px; 
+  padding: 14px;
+  color: var(--body-text-color);
+  overflow:scroll;
+  height: 82vh;
+}
+.sidebar{
+  display: flex;
+  flex-direction: column;
+  min-width: 100px;
+  color: var(--accents-color);
+}
+
+.music-data{
+  display: flex;
+  flex-direction: column;
+  flex: 3;  
+  margin-left: 10px;
 	font-family: "Rubik", sans-serif;
 	font-optical-sizing: auto;
 	font-weight: 400;
 	font-style: normal;
-	text-align:justify;
   font-size:14px;
+  padding: 14px;
   background-color: var(--light-bg-color);
+  border-radius: 10px;
+
 
 }
 
 table {
   border-collapse: collapse;
   width: 100%;
+  color: var(--body-text-color);
 }
 
 
-.music-data-container th{
-  background-color: var(--light-bg-color);
-  color: var( --light-bg-color);
+.music-data th{
+  color: var(--accents-color);
 
 }
 
 td, th {
   text-align: left;
   padding: 4px;
-  border: 1px solid var(--main-bg-color);
-  text-align: center;
-  background-color: var(--container-color);
+  text-align: left;
 
 }
 
@@ -214,6 +269,7 @@ input::placeholder {
   background-color: #242525;
   flex: 1;
   border-radius: 10px 10px 10px 10px;
+  padding: 14px;
 
 }
 
@@ -231,6 +287,113 @@ input::placeholder {
 #suggestions div:hover, div:focus {
     background-color: var(--container-color);
 
+}
+
+.albums-detected{
+  background-color: var(--light-bg-color);
+  margin-left: 10px;
+  border-radius: 10px;
+  display: flex;
+  flex: 2;
+  flex-direction: column;
+  font-family: "Rubik", sans-serif;
+  font-size: 14px; 
+  padding: 14px;
+  color: var(--body-text-color);
+
+}
+
+.album-card{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
+  padding: 5px;
+}
+
+.album-name{
+  font-size: 14px;
+  flex:4;
+}
+.album-count{
+  font-size: 14px;
+  width: 60px;
+}
+
+.edit-album-btn{
+  background-color: var(--light-bg-color);
+  color: var(--accents-color);
+  font-family: "Rubik", sans-serif;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+
+}
+
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: var(--light-bg-color);
+    border-radius: 10px;
+    padding: 24px;
+    min-width: 400px;
+    max-width: 600px;
+    font-family: "Rubik", sans-serif;
+    color: var(--body-text-color);
+    height: 500px;
+    overflow:scroll;
+
+}
+
+.modal-content h3 {
+    margin-top: 0;
+}
+
+.modal-content input {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 6px;
+    background-color: var(--container-color);
+    color: var(--body-text-color);
+    font-family: "Rubik", sans-serif;
+    font-size: 14px;
+    margin-bottom: 16px;
+}
+
+#modal-song-list div {
+    padding: 4px 0;
+    font-size: 13px;
+    border-bottom: 1px solid var(--container-color);
+}
+
+.modal-actions {
+    margin-top: 16px;
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+}
+
+.modal-actions button {
+    padding: 8px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-family: "Rubik", sans-serif;
+    font-size: 14px;
 }
 
 .footer{
@@ -262,7 +425,6 @@ input::placeholder {
   text-decoration:none; 
   cursor:pointer;  
 }
-
 
 @media (max-width: 768px) {
 main {

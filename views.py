@@ -10,10 +10,11 @@ def homepage():
     folder_path = session.get('folder_path')
 
     if not folder_path:
-        return render_template("homepage.html", data=[])
-    
+        return render_template("homepage.html", data=[], albums={})
+
     library = get_library(folder_path)
-    return render_template("homepage.html", data=library)
+    albums = group_by_album(library)
+    return render_template("homepage.html", data=library, albums=albums)
 
 @app.route("/edit", methods=["GET", "POST"])
 
@@ -65,6 +66,7 @@ def browse():
 
     return jsonify(subdir_list)
 
+
 @app.route("/load", methods=["POST"])
 
 def load_library():
@@ -74,3 +76,28 @@ def load_library():
     session['folder_path'] = path
 
     return redirect(url_for("homepage"))
+
+@app.route("/save-album", methods=["POST"])
+def save_album():
+    old_album = request.form.get('old_album')
+    new_album = request.form.get('new_album')
+    folder_path = session.get('folder_path')
+
+    library = get_library(folder_path)
+
+    for song in library:
+        if song['Album'] == old_album:
+            path = song['Path']
+            file = MutagenFile(path)
+
+            if file.tags is None:
+                file.add_tags()
+
+            if path.lower().endswith('.mp3'):
+                file.tags['TALB'] = TALB(encoding=3, text=[new_album])
+            else:
+                file['album'] = [new_album]
+
+            file.save()
+
+    return jsonify({"success": True})
